@@ -1,0 +1,78 @@
+<h2>Legg til nytt medlem</h2>
+
+<form action="?page={{ page }}&subpage=members" method="POST">
+	
+	<div class="col-xs-12 col-sm-6">
+		<div class="form-group">
+			<label class="control-label" for="region">Tilhører region</label>
+			<select name="region" required="required" class="form-control">
+				<option value="false" selected="selected" disabled="disabled">Velg region</option>
+				<option value="nord">Nord</option>
+				<option value="sor">Sør</option>
+				<option value="midt">Midt</option>
+				<option value="ost">Øst</option>
+				<option value="vest">Vest</option>
+			</select>
+		</div>
+		
+		<div class="form-group">
+			<label class="control-label" for="delta-bruker">UKMid-bruker</label>
+
+			<div class="users" id="delta-bruker">
+				<div class="navn"></div>
+				<input class="id" type="hidden" name="delta-bruker" />
+				<a href="#" class="reset" style="display:none;">Søk på nytt</a>
+				<div class="sok">
+					<b>Søk etter UKMid-bruker og klikk på riktig</b>
+					<div class="form-group">
+						<input id="filter_delta" class="form-control" type="search" placeholder="Du kan søke etter navn og mobilnummer" />
+					</div>
+					<ol class="list-group" id="deltabrukere" data-target="delta-bruker">
+						{% for user in delta_users %}
+							<li class="list-group-item selectUser" data-filter="{{ user.name }} {{ user.phone }}" data-id="{{ user.id }}">
+								{{ user.name }} <small>({{ user.phone }})</small>
+							</li>
+						{% else %}
+							<li class="list-group-item">Fant ingen UKMid-brukere</li>
+						{% endfor %}
+						<li class="list-group-item" id="deltabrukere_none" style="display:none;">
+							Fant ingen brukere som passer søket...
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label" for="delta-bruker">Wordpress-bruker</label>
+
+			<div class="users" id="wordpress-bruker">
+				<div class="navn"></div>
+				<input class="id" type="hidden" name="wordpress-bruker" />
+				<a href="#" class="reset" style="display:none;">Søk på nytt</a>
+				<div class="sok">
+					<b>Søk wordpress-bruker og klikk på riktig</b>
+					<div class="form-group">
+						<input id="filter_wp" class="form-control" type="search" placeholder="Du kan søke etter navn og mobilnummer" />
+					</div>
+					<ol class="list-group" id="wpbrukere" data-target="wordpress-bruker">
+						{% for user in wp_users %}
+							<li class="list-group-item selectUser" data-filter="{{ user.name }} {{ user.username }}" data-id="{{ user.id }}">
+								{{ user.username }} <small>({{ user.name }})</small>
+							</li>
+						{% else %}
+							<li class="list-group-item">Fant ingen wordpress-brukere</li>
+						{% endfor %}
+						<li class="list-group-item" id="deltabrukere_none" style="display:none;">
+							Fant ingen brukere som passer søket...
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>		
+		
+		<div class="form-group">
+			<button type="submit">Lagre</button>
+		</div>
+	</div>
+</form>

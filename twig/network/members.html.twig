@@ -1,0 +1,15 @@
+<h2>UKM Media medlemsregister</h2>
+
+<a href="?page={{ page }}&subpage=add" class="btn btn-success">Legg til nytt medlem</a>
+
+{% if message is defined %}
+	<div class="alert alert-{{ message.level }}">{{ message.message }}</div>
+{% endif %}
+
+<ol class="list-unstyled">
+	{% for bruker in brukere %}
+	<li class="list-item">
+		D_id: {{ bruker.getDeltaId() }} WP_id: {{ bruker.getWordpressId() }} {{ bruker.getRegion() }}
+	</li>
+	{% endfor %}
+</ol>
