@@ -6,10 +6,23 @@
 	<div class="alert alert-{{ message.level }}">{{ message.message }}</div>
 {% endif %}
 
-<ol class="list-unstyled">
-	{% for bruker in brukere %}
-	<li class="list-item">
-		D_id: {{ bruker.getDeltaId() }} WP_id: {{ bruker.getWordpressId() }} {{ bruker.getRegion() }}
-	</li>
-	{% endfor %}
-</ol>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Navn</th>
+			<th>Brukernavn</th>
+			<th>Delta-ID</th>
+			<th>Region</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for bruker in brukere %}
+		<tr>
+			<td>{{ bruker.getWordpressBruker().user_nicename }}</td>
+			<td>{{ bruker.getWordpressBruker().user_login }}</td>
+			<td>{{ bruker.getDeltaId() }}</td>
+			<td>{{ bruker.getRegion() }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

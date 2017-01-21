@@ -5,8 +5,6 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	require_once('UKM/mediabruker.class.php');
 	$mediabruker = write_mediabruker::create( $_POST['delta-bruker'], $_POST['wordpress-bruker'], $_POST['region']);
 
-#	var_dump( $mediabruker );
-
 	if( is_object( $mediabruker ) && $mediabruker->getDeltaId() == $_POST['delta-bruker'] ) {
 		$TWIGdata['message'] = array('level'=>'success', 'message'=>'Bruker lagt til!');
 	} else {
@@ -16,4 +14,8 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 $collection = new mediabrukere_collection();
 
+
 $TWIGdata['brukere'] = $collection->getAll();
+foreach( $TWIGdata['brukere'] as $user ) {
+	$user->setWordpressBruker( get_user_by('id', $user->getWordpressId() ) );
+}

@@ -1,9 +1,20 @@
 {% extends "_layout.html.twig" %}
 
 {% block content %}
-	<div class="row">
-		<div class="col-xs-12">
-			<h1>Velkommen til UKM Media!</h1>
+	<style>
+		img {
+			max-width: 100%;
+			height: auto;
+		}	
+	</style>
+
+	<div class="col-xs-12 col-sm-4 pull-right">
+		<div class="well">
+			Din info kommer her
 		</div>
+	</div>
+	<div class="col-xs-12 col-sm-8">
+		<h2>{{ page.title|raw }}</h2>
+	    {{page.content|raw}}
 	</div>
 {% endblock %}
