@@ -82,7 +82,7 @@ function UKMMedia() {
 }
 
 function UKMmedia_network_menu() {
-	$page = add_menu_page('UKM Media', 'UKM Media', 'superadmin', 'UKMMedia_network_admin','UKMMedia_network_admin', 'http://ico.ukm.no/heart-menu.png',2119);
+	$page = add_menu_page('UKM Media', 'UKM Media', 'superadmin', 'UKMMedia_network_admin','UKMMedia_network_admin', '//ico.ukm.no/heart-menu.png',2119);
 	add_action( 'admin_print_styles-' . $page, 'UKMmedia_scripts_and_styles' );
 }
 
