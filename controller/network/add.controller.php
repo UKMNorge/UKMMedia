@@ -7,7 +7,7 @@ $sql = new SQL('SELECT
 				ORDER BY `first_name`, `last_name`, `phone`', array(), 'ukmdelta');
 $res = $sql->run();
 
-while( $row = mysql_fetch_assoc( $res ) ) {
+while( $row = SQL::fetch( $res ) ) {
 	$TWIGdata['delta_users'][] = $row;
 }
 
